@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thunder Zap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: sakin, güven veren bir ürün sayfası; yasal metin net ve okunur.
+   IDEA: TV ekranında açık bir uygulama; sayfa bir TV kumandasıyla gezilen menü gibi.
+   PICTURE: çizilmiş TV, içinde Thunder Zap arayüzü (örnek, uydurma kanal adları), şimşek logosu.
+   COLOUR and TYPE: marka gecesi #130E1C, mor #9D6BFF, pembe #FF4FA3; Inter.
+   LAYOUT: üstte ürün bandı (metin + TV), altta özellikler, sonra gizlilik politikası TR/EN sekmeli. */
+:root{color-scheme:light dark;--bg:light-dark(#f6f3fb,#130e1c);--ink:light-dark(#1c1428,#efeaf7);--soft:light-dark(#5d5470,#b3a8c7);--panel:light-dark(#ffffff,#1d1529);--line:light-dark(#e2dcec,#2e2440);--violet:#9d6bff;--pink:#ff4fa3;--night:#130e1c}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:var(--pink)}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1180px;margin:0 auto}
+header.top{background:var(--night);color:#efeaf7}
+nav{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;max-width:1180px;margin:0 auto;padding:18px max(5vw,16px)}
+nav .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:#fff;text-decoration:none;margin-right:auto}
+nav .brand b{color:var(--pink)}
+nav a.l{color:#cfc5e3;text-decoration:none;font-weight:500;padding:10px 0}
+nav a.l:hover,nav a.l:focus-visible{color:#fff}
+.hero{background:var(--night);color:#efeaf7}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:center}
+h1{font-size:clamp(34px,5vw,52px);line-height:1.05;margin:0 0 16px;text-wrap:balance;font-weight:800}
+h1 b{color:var(--pink)}
+.lead{font-size:18px;color:#cfc5e3;max-width:34em;margin:0 0 22px}
+.note{font-size:14px;color:#a99dc0;border-left:3px solid var(--violet);padding:6px 0 6px 14px;max-width:36em}
+.tv{width:100%;height:auto;display:block}
+h2{font-size:32px;line-height:1.1;margin:0 0 18px;text-wrap:balance}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px 28px;padding:0;margin:0;list-style:none}
+.feat li{padding:14px 0;border-top:1px solid var(--line)}
+.feat strong{display:block;margin-bottom:2px}
+.feat span{color:var(--soft);font-size:15px}
+.policy{background:var(--panel);border-top:1px solid var(--line)}
+.tabs{display:flex;gap:8px;margin:0 0 24px;flex-wrap:wrap}
+.tabs button{font:inherit;font-weight:600;min-height:44px;padding:0 18px;border-radius:22px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--violet);border-color:var(--violet);color:#fff}
+.tabs button:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.doc{max-width:70ch}
+.doc h3{font-size:20px;margin:26px 0 6px}
+.doc p{margin:0 0 10px}
+.doc .date{color:var(--soft);font-size:14px}
+footer{background:var(--night);color:#a99dc0;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+@media(max-width:760px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:no-preference){.bolt{animation:flash 3.2s ease-in-out infinite}@keyframes flash{0%,86%,100%{opacity:1}90%{opacity:.35}}}
+</style>
+</head>
+<body>
+<header class="top">
+  <nav aria-label="Ana menü">
+    <a class="brand" href="#top"><svg width="30" height="30" viewBox="0 0 240 240" aria-hidden="true"><rect width="240" height="240" rx="54" fill="#1C0B33"/><path d="M56,54 H184 A18,18 0 0 1 202,72 V148 A18,18 0 0 1 184,166 H56 A18,18 0 0 1 38,148 V72 A18,18 0 0 1 56,54 Z" fill="none" stroke="#9D6BFF" stroke-width="12"/><path d="M92,190 H148" stroke="#9D6BFF" stroke-width="12" stroke-linecap="round"/><path d="M130,70 L94,120 L118,120 L106,152 L150,100 L126,100 L140,70 Z" fill="#FF4FA3"/></svg>Thunder <b>Zap</b></a>
+    <a class="l" href="#ozellikler">Özellikler</a>
+    <a class="l" href="#gizlilik">Gizlilik politikası</a>
+    <a class="l" href="#privacy">Privacy policy</a>
+    <a class="l" href="#iletisim">İletişim</a>
+  </nav>
+</header>
+
+<section class="hero band" id="top">
+  <div class="wrap">
+    <div>
+      <h1>Kendi IPTV listen için hızlı bir <b>TV oynatıcısı</b></h1>
+      <p class="lead">Thunder Zap; Android TV, Google TV ve telefonda M3U ve Xtream listelerini kumandayla rahatça izlemen için tasarlandı. Hesap yok, reklam yok, veri toplama yok.</p>
+      <p class="note">Thunder Zap yalnızca bir oynatıcıdır. Hiçbir kanal, film, dizi ya da yayın sağlamaz, barındırmaz veya satmaz. Kullanıcı yalnızca yasal olarak erişim hakkı olduğu listeleri ekler ve eklediği içerikten kendisi sorumludur.</p>
+    </div>
+    <svg class="tv" viewBox="0 0 640 420" role="img" aria-label="TV ekranında Thunder Zap arayüzü: solda menü, ortada kanal listesi, sağda önizleme">
+      <defs>
+        <linearGradient id="scr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1226"/><stop offset="1" stop-color="#241638"/></linearGradient>
+        <linearGradient id="prev" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b2160"/><stop offset="1" stop-color="#7a2f6c"/></linearGradient>
+      </defs>
+      <ellipse cx="320" cy="404" rx="190" ry="10" fill="#000" opacity=".35"/>
+      <rect x="250" y="360" width="140" height="16" rx="8" fill="#2d2240"/>
+      <rect x="296" y="340" width="48" height="26" fill="#2d2240"/>
+      <rect x="10" y="10" width="620" height="340" rx="18" fill="#0b0810" stroke="#3a2d52" stroke-width="2"/>
+      <rect x="26" y="26" width="588" height="308" rx="8" fill="url(#scr)"/>
+      <rect x="26" y="26" width="58" height="308" fill="#150e1f"/>
+      <g fill="#9d6bff" opacity=".85">
+        <circle cx="55" cy="66" r="9"/><rect x="45" y="100" width="20" height="14" rx="3"/><rect x="45" y="136" width="20" height="14" rx="3" opacity=".5"/><rect x="45" y="172" width="20" height="14" rx="3" opacity=".5"/><rect x="45" y="208" width="20" height="14" rx="3" opacity=".5"/>
+      </g>
+      <g font-family="Inter,sans-serif" font-size="13" fill="#d9d0ea">
+        <text x="100" y="58" font-size="12" fill="#9d8fb8">Örnek liste</text>
+        <rect x="96" y="70" width="248" height="34" rx="6" fill="#ff4fa3" opacity=".22"/>
+        <text x="108" y="92">1  Demo Haber</text><text x="108" y="128">2  Demo Spor</text><text x="108" y="164">3  Demo Belgesel</text><text x="108" y="200">4  Demo Müzik</text><text x="108" y="236">5  Demo Çocuk</text>
+        <g fill="#7f7396" font-size="11"><text x="250" y="92">20:00 Akşam</text><text x="250" y="128">20:30 Özet</text><text x="250" y="164">21:00 Doğa</text><text x="250" y="200">21:00 Liste</text><text x="250" y="236">20:45 Masal</text></g>
+      </g>
+      <rect x="360" y="44" width="236" height="134" rx="8" fill="url(#prev)"/>
+      <path class="bolt" d="M486,72 L452,120 L474,120 L462,152 L508,100 L484,100 L498,72 Z" fill="#ff4fa3"/>
+      <g font-family="Inter,sans-serif"><text x="360" y="204" font-size="15" font-weight="700" fill="#fff">Demo Haber</text><text x="360" y="224" font-size="12" fill="#b3a8c7">Şimdi 20:00 – 21:00</text><rect x="360" y="234" width="236" height="4" rx="2" fill="#3a2d52"/><rect x="360" y="234" width="120" height="4" rx="2" fill="#ff4fa3"/></g>
+    </svg>
+  </div>
+</section>
+
+<section class="band" id="ozellikler">
+  <div class="wrap">
+    <h2>Neler yapar</h2>
+    <ul class="feat">
+      <li><strong>M3U ve Xtream Codes</strong><span>Listeyi telefondan QR kodla ekleme; kumandayla adres yazmak yok.</span></li>
+      <li><strong>Program rehberi</strong><span>Kanal kanal ya da XMLTV ile rehber ve zaman çizelgesi.</span></li>
+      <li><strong>Filmler ve diziler</strong><span>Kategoriler, sıralama, gruplama, Listem ve izleme geçmişi.</span></li>
+      <li><strong>Tam ekranda kanal listesi</strong><span>Video sürerken kanal seçimi, önceki kanala tek tuşla dönüş.</span></li>
+      <li><strong>Ses, altyazı, görüntü oranı</strong><span>Yayının ses izleri ve altyazıları arasında seçim; sığdır, doldur, 16:9, 4:3.</span></li>
+      <li><strong>Donma bekçisi</strong><span>Takılan yayına kendiliğinden yeniden bağlanır.</span></li>
+      <li><strong>Ebeveyn denetimi</strong><span>PIN ve gizli gruplar.</span></li>
+      <li><strong>Yedekleme</strong><span>Ayarları ve listeleri yerel ağ üzerinden telefona yedekleme ve geri yükleme.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="policy band" id="gizlilik" aria-label="Gizlilik politikası / Privacy policy">
+  <div class="wrap">
+    <span id="privacy"></span>
+    <h2>Gizlilik politikası</h2>
+    <div class="tabs" role="tablist">
+      <button role="tab" id="t-tr" aria-controls="p-tr" aria-selected="true">Türkçe</button>
+      <button role="tab" id="t-en" aria-controls="p-en" aria-selected="false">English</button>
+    </div>
+
+    <article class="doc" id="p-tr" role="tabpanel" aria-labelledby="t-tr">
+      <p class="date">Son güncelleme: 23 Kasım 2026</p>
+      <p>Thunder Zap ("uygulama"), Çağatay Yıldırım tarafından geliştirilen bir medya oynatıcıdır. Bu politika, uygulamanın bilgilerinizi nasıl işlediğini açıklar.</p>
+      <h3>1. Toplanan veriler</h3>
+      <p>Uygulama, geliştiriciye ya da üçüncü taraflara hiçbir kişisel veri göndermez. Analiz, reklam veya izleme araçları kullanılmaz. Hesap oluşturmanız gerekmez.</p>
+      <h3>2. Cihazda saklanan bilgiler</h3>
+      <p>Eklediğiniz oynatma listesi adresi (kullanıcı adı ve şifre dahil), favoriler, izleme geçmişi, ayarlar ve hata kayıtları yalnızca cihazınızda saklanır. Uygulamayı kaldırdığınızda bu bilgiler silinir.</p>
+      <h3>3. Ağ bağlantıları</h3>
+      <p>Uygulama yalnızca sizin eklediğiniz sunuculara (oynatma listesi, yayın ve program rehberi adresleri) bağlanır. Bu sunucuların veri uygulamalarından ilgili sağlayıcı sorumludur.</p>
+      <h3>4. Yerel ağ özellikleri</h3>
+      <p>QR kodla liste ekleme ve yedekleme özellikleri, yalnızca ilgili ekran açıkken ve yalnızca aynı yerel ağdaki cihazların erişebileceği geçici bir bağlantı açar. Aktarılan bilgiler internete gönderilmez.</p>
+      <h3>5. Çocuklar</h3>
+      <p>Uygulama 18 yaşından küçüklere yönelik değildir ve bilerek çocuklardan veri toplamaz.</p>
+      <h3>6. İçerik</h3>
+      <p>Uygulama hiçbir kanal, film, dizi veya yayın sağlamaz. Eklediğiniz içeriklerden kullanıcı sorumludur.</p>
+      <h3>7. Değişiklikler ve iletişim</h3>
+      <p>Bu politika güncellenirse yukarıdaki tarih değiştirilir. Sorularınız için: <a href="mailto:yldrmcgty@gmail.com">yldrmcgty@gmail.com</a></p>
+    </article>
+
+    <article class="doc" id="p-en" role="tabpanel" aria-labelledby="t-en" lang="en" hidden>
+      <p class="date">Last updated: 23 November 2026</p>
+      <p>Thunder Zap ("the app") is a media player developed by Çağatay Yıldırım. This policy explains how the app handles your information.</p>
+      <h3>1. Data collection</h3>
+      <p>The app does not send any personal data to the developer or to third parties. No analytics, advertising or tracking tools are used. No account is required.</p>
+      <h3>2. Data stored on your device</h3>
+      <p>The playlist address you add (including username and password), favorites, watch history, settings and error logs are stored only on your device and are deleted when you uninstall the app.</p>
+      <h3>3. Network connections</h3>
+      <p>The app connects only to the servers you add (playlist, stream and program guide addresses). Those servers are governed by their providers' own policies.</p>
+      <h3>4. Local network features</h3>
+      <p>Adding a playlist by QR code and backup/restore open a temporary connection reachable only by devices on the same local network, and only while that screen is open. Nothing is sent to the internet.</p>
+      <h3>5. Children</h3>
+      <p>The app is not directed at children under 18 and does not knowingly collect data from children.</p>
+      <h3>6. Content</h3>
+      <p>The app does not provide any channels, movies, series or streams. Users are responsible for the content they add.</p>
+      <h3>7. Changes and contact</h3>
+      <p>If this policy changes, the date above will be updated. Contact: <a href="mailto:yldrmcgty@gmail.com">yldrmcgty@gmail.com</a></p>
+    </article>
+  </div>
+</section>
+
+<footer class="band" id="iletisim">
+  <div class="wrap">
+    <span>İletişim: yldrmcgty@gmail.com</span>
+    <span>Thunder Zap · yalnızca bir medya oynatıcısıdır · arayüzdeki kanal adları örnektir</span>
+  </div>
+</footer>
+
+<script>
+{
+  const tr = document.getElementById('t-tr'), en = document.getElementById('t-en');
+  const ptr = document.getElementById('p-tr'), pen = document.getElementById('p-en');
+  const show = (lang) => {
+    const isEn = lang === 'en';
+    tr.setAttribute('aria-selected', String(!isEn));
+    en.setAttribute('aria-selected', String(isEn));
+    ptr.hidden = isEn;
+    pen.hidden = !isEn;
+  };
+  tr.addEventListener('click', () => show('tr'));
+  en.addEventListener('click', () => show('en'));
+  const route = () => {
+    const h = location.hash;
+    if (h === '#privacy') show('en');
+    else if (h === '#gizlilik') show('tr');
+    if (h === '#privacy' || h === '#gizlilik') document.getElementById('gizlilik').scrollIntoView();
+  };
+  window.addEventListener('hashchange', route);
+  route();
+}
+</script>
+</body>
+</html>
