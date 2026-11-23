@@ -6,4 +6,5 @@ Thunder Zap yalnızca bir medya oynatıcısıdır; hiçbir kanal, film, dizi ya 
 
 - Tanıtım sayfası: https://cgtyyldrm.github.io/thunderzap/
 - Gizlilik politikası: https://cgtyyldrm.github.io/thunderzap/#gizlilik (English: `#privacy`)
+- Geliştirici: Tamir A.Ş.
 - İletişim: yldrmcgty@gmail.com
